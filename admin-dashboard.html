@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+    <div class="container full-size">
+        <h1>Admin Dashboard</h1>
+        <!-- Dashboard content goes here -->
+
+        <div class="menu">
+            <button onclick="showSection('department')">Department</button>
+            <button onclick="showSection('semester')">Semester</button>
+            <button onclick="showSection('faculty')">Faculty</button>
+            <button onclick="showSection('subject')">Subject</button>
+            <button onclick="showSection('venue')">Venue</button>
+            <button onclick="showSection('timetable')">Generate Timetable</button>
+        </div>
+
+        <!-- Department Section -->
+        <div id="department-section" class="section">
+            <h2>Add Department</h2>
+            <form id="department-form">
+                <label for="department-name">Department Name:</label>
+                <input type="text" id="department-name" name="department-name" required>
+                <button type="button" onclick="addDepartment()">Add</button>
+            </form>
+            <table id="department-table" class="data-table">
+                <thead>
+                    <tr>
+                        <th>Department Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Semester Section -->
+        <div id="semester-section" class="section">
+            <h2>Add Semester</h2>
+            <form id="semester-form">
+                <label for="department-select">Select Department:</label>
+                <select id="department-select" name="department-select" required></select>
+
+                <label for="semester-number">Semester Number:</label>
+                <input type="number" id="semester-number" name="semester-number" min="1" max="10" required>
+                <button type="button" onclick="addSemester()">Add</button>
+            </form>
+            <table id="semester-table" class="data-table">
+                <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>Semester</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Faculty Section -->
+        <div id="faculty-section" class="section">
+            <h2>Add Faculty</h2>
+            <form id="faculty-form">
+                <label for="faculty-department-select">Select Department:</label>
+                <select id="faculty-department-select" name="faculty-department-select" required></select>
+
+                <label for="faculty-semester-select">Select Semester:</label>
+                <select id="faculty-semester-select" name="faculty-semester-select" required></select>
+
+                <label for="faculty-subject-select">Select Subject:</label>
+                <select id="faculty-subject-select" name="faculty-subject-select" required></select>
+
+                <label for="faculty-name">Faculty Name:</label>
+                <input type="text" id="faculty-name" name="faculty-name" required>
+                <button type="button" onclick="addFaculty()">Add</button>
+            </form>
+            <table id="faculty-table" class="data-table">
+                <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>Semester</th>
+                        <th>Subject</th>
+                        <th>Faculty Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Subject Section -->
+        <div id="subject-section" class="section">
+            <h2>Add Subject</h2>
+            <form id="subject-form">
+                <label for="subject-department-select">Select Department:</label>
+                <select id="subject-department-select" name="subject-department-select" required></select>
+
+                <label for="subject-semester-select">Select Semester:</label>
+                <select id="subject-semester-select" name="subject-semester-select" required></select>
+
+                <label for="subject-name">Subject Name:</label>
+                <input type="text" id="subject-name" name="subject-name" required>
+                <button type="button" onclick="addSubject()">Add</button>
+            </form>
+            <table id="subject-table" class="data-table">
+                <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>Semester</th>
+                        <th>Subject Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        
+        <!-- Department Section -->
+        <!-- ... existing Department, Semester, Faculty, and Subject sections ... -->
+
+        <!-- Venue Section -->
+        <div id="venue-section" class="section">
+            <h2>Add Venue</h2>
+            <form id="venue-form">
+                <label for="venue-name">Venue Name:</label>
+                <input type="text" id="venue-name" name="venue-name" required>
+                
+                <label for="venue-capacity">Capacity:</label>
+                <input type="number" id="venue-capacity" name="venue-capacity" min="1" required>
+
+                <label for="venue-department-select">Department:</label>
+                <select id="venue-department-select" name="venue-department-select" required>
+                    <!-- Departments will be dynamically populated here -->
+                </select>
+
+                <button type="button" onclick="addVenue()">Add</button>
+            </form>
+            <table id="venue-table" class="data-table">
+                <thead>
+                    <tr>
+                        <th>Venue Name</th>
+                        <th>Capacity</th>
+                        <th>Department</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+          
+                
+                    
+
+        <!-- Timetable Generation Section -->
+        <div id="timetable-section" class="section">
+            <h2>Generate Timetable</h2>
+            <form id="timetable-form">
+                <label for="timetable-department-select">Select Department:</label>
+                <select id="timetable-department-select" name="timetable-department-select" required></select>
+
+                <label for="timetable-semester-select">Select Semester:</label>
+                <select id="timetable-semester-select" name="timetable-semester-select" required></select>
+                <button type="button" onclick="generateTimetable()">Generate Timetable</button>
+            </form>
+            <div id="timetable"></div>
+                <!-- The generated timetable will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

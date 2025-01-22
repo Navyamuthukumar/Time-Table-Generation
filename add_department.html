@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Department</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Add Department</h2>
+        <form id="department-form" onsubmit="addDepartment(); return false;">
+            <label for="department-name">Department Name:</label>
+            <input type="text" id="department-name" name="department-name" required>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+
+    <script>
+        function addDepartment() {
+            const deptName = document.getElementById('department-name').value;
+            if (deptName) {
+                let departments = JSON.parse(localStorage.getItem('departments')) || [];
+                departments.push(deptName);
+                localStorage.setItem('departments', JSON.stringify(departments));
+                // Redirect back to the admin dashboard
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html>

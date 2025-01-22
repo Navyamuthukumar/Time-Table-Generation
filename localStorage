@@ -1,0 +1,12 @@
+function addSubject() {
+    const deptSelect = document.getElementById('subject-department-select').value;
+    const semSelect = document.getElementById('subject-semester-select').value;
+    const subjectName = document.getElementById('subject-name').value;
+    if (deptSelect && semSelect && subjectName) {
+        subjects.push({ department: deptSelect, semester: semSelect, name: subjectName });
+        updateSubjectTable();
+
+        // Store the updated subjects in localStorage
+        localStorage.setItem('subjects', JSON.stringify(subjects));
+    }
+}

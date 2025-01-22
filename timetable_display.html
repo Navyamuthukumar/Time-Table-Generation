@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable Display</title>
+    <style>
+        .timetable-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .timetable-table th, .timetable-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .timetable-table th {
+            background-color: #f2f2f2;
+        }
+        .break {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Timetable</h1>
+    <div id="timetable-container"></div>
+
+    <script>
+        function displayTimetable() {
+            const timetableHTML = localStorage.getItem('timetable');
+            if (timetableHTML) {
+                document.getElementById('timetable-container').innerHTML = timetableHTML;
+            } else {
+                document.getElementById('timetable-container').innerHTML = 'No timetable data available.';
+            }
+        }
+
+        // Call displayTimetable after the page has loaded
+        document.addEventListener('DOMContentLoaded', displayTimetable);
+    </script>
+</body>
+</html>

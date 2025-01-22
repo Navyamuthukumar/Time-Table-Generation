@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>STUDENT LOGIN</h2>
+        <form onsubmit="return handleStudentLogin(event)">
+            <label for="student-id">Student ID:</label>
+            <input type="text" id="student-id" name="student-id" required>
+            <label for="student-pass">Password:</label>
+            <input type="password" id="student-pass" name="student-pass" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        function handleStudentLogin(event) {
+            event.preventDefault();
+            const studentId = document.getElementById('student-id').value;
+            const studentPass = document.getElementById('student-pass').value;
+
+            // Simple authentication check (for demonstration purposes)
+            if (studentId && studentPass === "student123") {
+                localStorage.setItem('loggedInStudent', studentId);
+                window.location.href = 'student-dashboard.html';
+            } else {
+                alert('Invalid Student ID or Password');
+            }
+        }
+    </script>
+</body>
+</html>

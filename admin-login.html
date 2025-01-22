@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>ADMIN LOGIN</h2>
+        <form onsubmit="return handleAdminLogin(event)">
+            <label for="admin-id">Admin ID:</label>
+            <input type="text" id="admin-id" name="admin-id" required>
+            <label for="admin-pass">Password:</label>
+            <input type="password" id="admin-pass" name="admin-pass" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        function handleAdminLogin(event) {
+            event.preventDefault();
+            const adminId = document.getElementById('admin-id').value;
+            const adminPass = document.getElementById('admin-pass').value;
+
+            if (adminId === "admin" && adminPass === "password") {
+                window.location.href = 'admin-dashboard.html';
+            } else {
+                alert('Invalid Admin ID or Password');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Semester</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Add Semester</h2>
+        <form id="semester-form" onsubmit="addSemester(); return false;">
+            <label for="department-select">Select Department:</label>
+            <select id="department-select" name="department-select"></select>
+            
+            <label for="semester-number">Semester Number:</label>
+            <input type="number" id="semester-number" name="semester-number" min="1" max="10" required>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const deptSelect = document.getElementById('department-select');
+            const departments = JSON.parse(localStorage.getItem('departments')) || [];
+            departments.forEach(department => {
+                let option = document.createElement('option');
+                option.value = department;
+                option.text = department;
+                deptSelect.appendChild(option);
+            });
+        });
+
+        function addSemester() {
+            const department = document.getElementById('department-select').value;
+            const semester = document.getElementById('semester-number').value;
+            if (department && semester) {
+                let semesters = JSON.parse(localStorage.getItem('semesters')) || [];
+                semesters.push({ department, semester });
+                localStorage.setItem('semesters', JSON.stringify(semesters));
+                // Redirect back to the admin dashboard
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html>
